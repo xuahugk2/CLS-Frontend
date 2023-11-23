@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter, Manrope } from 'next/font/google';
-import './globals.css';
 import { cx } from '@/utils';
 // Custom components/libs
 import Header from '@/components/Header';
+// css
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-in' });
 const manrope = Manrope({ subsets: ['latin'], display: 'swap', variable: '--font-mr' });

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-// Custom components/libs
+// Image
 import profileImg from '/public/profile-img.png';
 
 const Logo = () => {
