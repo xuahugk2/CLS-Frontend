@@ -7,7 +7,7 @@
     "eol-last": [2, "windows"],
     "semi": [2, "always"],
     "quotes": [2, "single", { "avoidEscape": true }],
-    "max-len": ["error", { "code": 120 }],
+    // "max-len": ["error", { "code": 120 }],
     // Add the react/no-unescaped-entities rule
     "react/no-unescaped-entities": [
       "error",
