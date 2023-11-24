@@ -15,20 +15,20 @@ const config: Config = {
         accentDark: '#ffdb4d',
         gray: '#747474',
       },
-      fontFamily:{
+      fontFamily: {
         mr: ['var(--font-mr)'],
         in: ['var(--font-in)'],
       },
-      animation:{
+      animation: {
         roll: 'roll 24s linear infinite',
       },
-      keyframes:{
-        roll:{
-          '0%': {transform: 'translateX(100%)'},
-          '100%': {transform: 'translateX(-100%)'},
+      keyframes: {
+        roll: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
-      screens:{
+      screens: {
         sxl: '1180px',
         // @media (min-width: 1180px){...}
         xs: '480px',
@@ -36,6 +36,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
 export default config;

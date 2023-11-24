@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 // Custom components/libs
 import { cx } from '@/utils';
 
 interface TagType {
-  link: string,
-  name: string,
+  link: string;
+  name: string;
   props: {
-    className: string
-  }
+    className: string;
+  };
 }
 
 const classes: string[] = [
@@ -20,7 +20,7 @@ const classes: string[] = [
   'hover:scale-105 transition-all ease-in-out duration-200',
 ];
 
-const Tag = ({ link = '#', name, props }: TagType) => {
+const Tag = ({ link = '#', name = '', props }: TagType) => {
   const { className } = props;
 
   return (
