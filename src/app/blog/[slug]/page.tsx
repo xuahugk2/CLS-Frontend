@@ -78,7 +78,12 @@ function BlogPage({ params }: { params: { slug: string } }) {
                       </span>
                       : null}
 
-                    <span className="hover:underline">{heading.text}</span>
+                    <span
+                      className="hover:underline whitespace-nowrap overflow-hidden text-ellipsis"
+                      title={heading.text}
+                    >
+                      {heading.text}
+                    </span>
                   </a>
                 </li>
               ))}
