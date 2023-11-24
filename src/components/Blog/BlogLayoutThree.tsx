@@ -1,20 +1,18 @@
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { format } from 'date-fns';
 // Custom components/libs
 import { Blog } from '@/contentlayer/generated';
 
-interface BlogLayoutTwoType {
+interface BlogLayoutThreeType {
   blog: Blog;
 }
 
-function BlogLayoutTwo({ blog }: BlogLayoutTwoType) {
+const BlogLayoutThree = ({ blog }: BlogLayoutThreeType) => {
   return (
-    <div className="group grid grid-cols-12 gap-4 items-center text-dark">
-      <Link
-        href={blog.url}
-        className="col-span-4 h-full rounded-xl overflow-hidden"
-      >
+    <div className="group flex flex-col items-center text-dark">
+      <Link href={blog.url} className="h-full rounded-xl overflow-hidden">
         <Image
           src={blog.image?.filePath?.replace('../public', '') || ''}
           placeholder={'blur'}
@@ -22,10 +20,10 @@ function BlogLayoutTwo({ blog }: BlogLayoutTwoType) {
           alt={blog.title}
           width={blog.image?.width}
           height={blog.image?.height}
-          className="aspect-square w-full h-full object-cover object-center group-hover:scale-105 transition-all ease-in-out duration-300"
+          className="aspect-[4/3] w-full h-full object-cover object-center group-hover:scale-105 transition-all ease-in-out duration-300"
         />
       </Link>
-      <div className="col-span-8 w-full">
+      <div className="flex flex-col w-full mt-4">
         <span className="uppercase text-accent font-semibold text-sm">
           {blog?.tags && blog?.tags[0]}
         </span>
@@ -42,6 +40,6 @@ function BlogLayoutTwo({ blog }: BlogLayoutTwoType) {
       </div>
     </div>
   );
-}
+};
 
-export default BlogLayoutTwo;
+export default BlogLayoutThree;
