@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { slug } from 'github-slugger';
 // Custom components/libs
 import { Blog, allBlogs } from '@/contentlayer/generated';
 import Tag from '@/components/Elements/Tag';
@@ -12,19 +13,26 @@ interface Toc {
   slug: string;
 }
 
+export async function generateStaticParams() {
+  const blogs = allBlogs.map((blog) => {
+    slug: blog._raw.flattenedPath;
+  });
+
+  return blogs;
+}
+
 function BlogPage({ params }: { params: { slug: string } }) {
   const blog: Blog = allBlogs.find(
     (b) => b._raw.flattenedPath === params.slug
   )!;
 
-  console.log(blog.toc);
   return (
     <article>
       <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
         <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <Tag
             name={(blog?.tags && blog?.tags[0]) || ''}
-            link={`/categories/${blog?.tags && blog?.tags[0]}`}
+            link={`/categories/${blog?.tags && slug(blog?.tags[0])}`}
             props={{ className: 'px-6 text-sm py-2' }}
           />
           <h1 className="inline-block mt-6 font-semibold capitalize text-light text-5xl leading-normal relative w-5/6">

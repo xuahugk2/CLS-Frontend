@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { slug } from 'github-slugger';
 // Custom components/libs
 import Tag from '@/components/Elements/Tag';
 import { Blog } from '@/contentlayer/generated';
@@ -27,7 +28,7 @@ const HomeCoverSection = ({ blogs }: HomeCoverSectionType) => {
         />
         <div className="w-3/4 p-16 flex flex-col items-start justify-center z-0 text-light">
           <Tag
-            link={`/categories/${blog?.tags && blog?.tags[0]}`}
+            link={`/categories/${blog?.tags && slug(blog?.tags[0])}`}
             name={(blog?.tags && blog?.tags[0]) || ''}
             props={{
               className: '',

@@ -64,7 +64,7 @@ const Footer = () => {
         <span className="text-center">
           &copy;{new Date().getUTCFullYear()} CLS. All right reserved.
         </span>
-        <Link href={'.sitemap.xml'} className="text-center underline">
+        <Link href={'/sitemap.xml'} className="text-center underline">
           sitemap.xml
         </Link>
         <div className="text-center">

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { slug } from 'github-slugger';
 // Custom components/libs
 import { Blog } from '@/contentlayer/generated';
 import Tag from '../Elements/Tag';
@@ -23,7 +24,7 @@ const BlogLayoutOne = ({ blog }: BlogLayoutOneType) => {
       />
       <div className="w-full absolute bottom-0 p-10 z-20">
         <Tag
-          link={`/categories/${blog?.tags && blog?.tags[0]}`}
+          link={`/categories/${blog?.tags && slug(blog?.tags[0])}`}
           name={(blog?.tags && blog?.tags[0]) || ''}
           props={{
             className: 'p-6 text-sm py-2 !border',
