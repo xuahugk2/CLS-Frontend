@@ -7,7 +7,6 @@
     "semi": [2, "always"],
     "quotes": [2, "single", { "avoidEscape": true }],
     "curly": ["error", "all"],
-    // "max-len": ["error", { "code": 80, "ignoreUrls": true }],
     "no-confusing-arrow": ["error", { "allowParens": false }]
   }
 }

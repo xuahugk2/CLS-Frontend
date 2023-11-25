@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { slug } from 'github-slugger';
 // Custom components/libs
 import { Blog } from '@/contentlayer/generated';
+import ViewCounter from './ViewCounter';
 
 interface BlogDetailType {
   blog: Blog;
@@ -16,7 +17,9 @@ const BlogDetail = ({ blog, slug: blogSlug }: BlogDetailType) => {
       <time className="m-3">
         {format(parseISO(blog.publishedAt), 'LLLL d, yyyy')}
       </time>
-      <span className="m-3">1.000.000 views</span>
+      <span className="m-3">
+        <ViewCounter slug={blogSlug} showCount={true} noCount={false} />
+      </span>
       <div className="m-3">{blog.readingTime.text}</div>
       <Link
         href={`/categories/${blog?.tags && slug(blog?.tags[0])}`}
