@@ -4,6 +4,7 @@ import { cx } from '@/utils';
 // Custom components/libs
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteMetadata from '@/utils/SiteMetadata';
 // css
 import './globals.css';
 
@@ -19,8 +20,38 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Coding Life Sharing',
-  description: 'We are going to share our coding experience daily life.',
+  metadataBase: new URL(SiteMetadata.siteUrl),
+  title: {
+    template: `%s | ${SiteMetadata.title}`,
+    default: SiteMetadata.title, // TODO
+  },
+  description: SiteMetadata.description,
+  openGraph: {
+    title: SiteMetadata.title,
+    description: SiteMetadata.description,
+    url: SiteMetadata.siteUrl,
+    siteName: SiteMetadata.title,
+    images: [SiteMetadata.socialBanner],
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SiteMetadata.title,
+    images: [SiteMetadata.socialBanner],
+  },
 };
 
 export default function RootLayout({

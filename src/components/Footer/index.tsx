@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import React from 'react';
-import { FieldValue, SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 // Custom components/libs
 import { LinkedInIcon, GithubIcon } from '../Icons';
+import SiteMetadata from '@/utils/SiteMetadata';
 
 interface FormDataType {
   email: string;
@@ -46,14 +46,14 @@ const Footer = () => {
       </form>
       <div className="flex items-center mt-8">
         <Link
-          href={'https://www.linkedin.com/in/nguyen-xuan-hung-b25154193/'}
+          href={SiteMetadata.linkedin}
           target={'_blank'}
           className="inline-block w-6 h-6 mr-4"
         >
           <LinkedInIcon className="hover:scale-125 transition-all ease-in-out duration-200" />
         </Link>
         <Link
-          href={'https://github.com/xuahugk2'}
+          href={SiteMetadata.github}
           target={'_blank'}
           className="inline-block w-6 h-6 mr-4 fill-light"
         >

@@ -2,10 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { slug } from 'github-slugger';
 // Custom components/libs
-import { Blog, allBlogs } from '@/contentlayer/generated';
+import { Blog, ImageFieldData, allBlogs } from '@/contentlayer/generated';
 import Tag from '@/components/Elements/Tag';
 import BlogDetail from '@/components/Blog/BlogDetail';
 import RenderMdx from '@/components/Blog/RenderMdx';
+import SiteMetadata from '@/utils/SiteMetadata';
 
 interface Toc {
   level: string;
@@ -19,6 +20,57 @@ export async function generateStaticParams() {
   });
 
   return blogs;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const blog: Blog = allBlogs.find(
+    (blog) => blog._raw.flattenedPath === params.slug
+  )!;
+  if (!blog) {
+    return;
+  }
+
+  const publishedAt = new Date(blog.publishedAt).toISOString();
+  const modifiedAt = new Date(blog.updatedAt || blog.publishedAt).toISOString();
+
+  let imageList = [SiteMetadata.socialBanner];
+  if (blog.image) {
+    imageList = [
+      SiteMetadata.siteUrl + blog.image.filePath.replace('../public', ''),
+    ];
+  }
+  const ogImages = imageList.map((img) => {
+    return { url: img.includes('http') ? img : SiteMetadata.siteUrl + img };
+  });
+
+  const authors = blog?.author ? [blog.author] : SiteMetadata.author;
+
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      url: SiteMetadata.siteUrl + blog.url,
+      siteName: SiteMetadata.title,
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: publishedAt,
+      modifiedTime: modifiedAt,
+      images: ogImages,
+      authors: authors.length > 0 ? authors : [SiteMetadata.author],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.description,
+      images: ogImages,
+    },
+  };
 }
 
 function BlogPage({ params }: { params: { slug: string } }) {
@@ -80,11 +132,11 @@ function BlogPage({ params }: { params: { slug: string } }) {
                   >
                     {['three', 'four', 'five', 'six'].includes(
                       heading.level
-                    ) ?
-                      <span className="flex w-1 h-1 rounded-full bg-dark mr-2">
+                    ) ? (
+                        <span className="flex w-1 h-1 rounded-full bg-dark mr-2">
                         &nbsp;
-                      </span>
-                      : null}
+                        </span>
+                      ) : null}
 
                     <span
                       className="hover:underline whitespace-nowrap overflow-hidden text-ellipsis"

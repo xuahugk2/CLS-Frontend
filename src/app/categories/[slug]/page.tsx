@@ -25,6 +25,25 @@ export async function generateStaticParams() {
   return paths;
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  return {
+    title: `${capitalize(params.slug.replaceAll('-', ' '))} Blogs`,
+    description: `Learn more about ${
+      params.slug === 'all' ? 'web development' : params.slug
+    } through our collection of expert blogs and tutorials`,
+  };
+}
+
+function capitalize(title: string) {
+  return title.replace(/\b\w/g, function (t) {
+    return t.toUpperCase();
+  });
+}
+
 const CategoriesPage = ({ params }: { params: { slug: string } }) => {
   const allCategories: string[] = ['all'];
   const blogs = allBlogs.filter((blog) => {

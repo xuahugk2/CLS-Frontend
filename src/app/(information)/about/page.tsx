@@ -1,7 +1,13 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 // Custom components/libs
 import AboutCoverSection from '@/components/About/AboutCoverSection';
 import Skills from '@/components/About/Skills';
+
+export const metadata: Metadata = {
+  title: 'About Me',
+  description: 'Here are some details about my self.',
+};
 
 const AboutPage = () => {
   return (

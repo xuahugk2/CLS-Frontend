@@ -1,8 +1,8 @@
-import React from 'react';
+import Link from 'next/link';
 // Custom components/libs
 import Logo from './Logo';
-import Link from 'next/link';
 import { GithubIcon, LinkedInIcon, SunIcon } from '../Icons';
+import SiteMetadata from '@/utils/SiteMetadata';
 
 const Header = () => {
   return (
@@ -24,14 +24,14 @@ const Header = () => {
       </nav>
       <div>
         <Link
-          href={'https://www.linkedin.com/in/nguyen-xuan-hung-b25154193/'}
+          href={SiteMetadata.linkedin}
           target={'_blank'}
           className="inline-block w-6 h-6 mr-6"
         >
           <LinkedInIcon className="hover:scale-125 transition-all ease-in-out duration-200" />
         </Link>
         <Link
-          href={'https://github.com/xuahugk2'}
+          href={SiteMetadata.github}
           target={'_blank'}
           className="inline-block w-6 h-6 mr-6"
         >
