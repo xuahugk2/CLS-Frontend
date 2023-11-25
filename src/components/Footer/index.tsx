@@ -5,7 +5,7 @@ import { FieldValue, SubmitHandler, useForm } from 'react-hook-form';
 // Custom components/libs
 import { LinkedInIcon, GithubIcon } from '../Icons';
 
-interface FooterFormData {
+interface FormDataType {
   email: string;
 }
 
