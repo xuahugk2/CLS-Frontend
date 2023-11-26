@@ -97,7 +97,7 @@ function BlogPage({ params }: { params: { slug: string } }) {
       {
         '@type': 'Person',
         name: blog?.author ? [blog.author] : SiteMetadata.author,
-        url: SiteMetadata.twitter,
+        url: SiteMetadata.github,
       },
     ],
   };

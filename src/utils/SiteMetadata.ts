@@ -1,5 +1,6 @@
 const SiteMetadata = {
   title: 'Coding Life Sharing',
+  shortName: 'CLS',
   author: 'CLS Dev Team',
   headerTitle: 'Next.js Blog',
   description: 'We are going to share our coding experience daily life.',
