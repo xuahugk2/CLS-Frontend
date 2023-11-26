@@ -7,8 +7,8 @@ const LottieAnimation = () => {
   return (
     <DotLottiePlayer
       src={'/animation_llqd7ey4.lottie'}
-      autoplay
-      loop
+      autoplay={true}
+      loop={true}
     ></DotLottiePlayer>
   );
 };

@@ -13,16 +13,16 @@ interface CategoryType {
 }
 
 const classes: string[] = [
-  'inline-block m-2 py-2 px-10',
+  'inline-block',
+  'm-2 py-1.5 md:py-2 px-6 md:px-10',
   'rounded-full',
-  'font-semibold',
-  'border-2 border-solid border-dark',
+  'border-2 border-solid border-dark dark:border-light',
   'hover:scale-105 transition-all ease-in-out duration-200',
 ];
 
 const Category = ({ link = '#', name = '', isActive, props }: CategoryType) => {
   const { className } = props;
-  const activeCss = isActive ? 'bg-dark text-light' : 'bg-light text-dark';
+  const activeCss = isActive ? 'bg-dark text-light dark:bg-light dark:text-dark' : 'bg-light text-dark dark:bg-dark dark:text-light';
 
   return (
     <Link href={link} className={cx(...classes, className, activeCss)}>
