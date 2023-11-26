@@ -137,10 +137,10 @@ function BlogPage({ params }: { params: { slug: string } }) {
         </div>
         <BlogDetail blog={blog} slug={params.slug} />
 
-        <div className="grid grid-cols-12  gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10">
-          <div className="col-span-12  lg:col-span-4">
+        <div className="grid grid-cols-12 gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10">
+          <div className="col-span-12 lg:col-span-4">
             <details
-              className="border-[1px] border-solid border-dark dark:border-light text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
+              className="border-[1px] border-solid border-dark dark:border-light text-dark dark:text-light rounded-lg p-4 sticky top-6 overflow-hidden overflow-y-auto"
               open
             >
               <summary className="text-lg font-semibold capitalize cursor-pointer">
@@ -157,16 +157,17 @@ function BlogPage({ params }: { params: { slug: string } }) {
                                        data-[level=two]:border-t border-solid border-dark/40
                                        data-[level=three]:pl-4
                                        sm:data-[level=three]:pl-6
+                                       data-[level=four]:pl-10
                                        flex items-center justify-start
                                        "
                       >
-                        {heading.level === 'three' ? (
+                        {['three', 'four', 'five', 'six'].includes(heading.level) ? (
                           <span className="flex w-1 h-1 rounded-full bg-dark mr-2">
                             &nbsp;
                           </span>
                         ) : null}
 
-                        <span className="hover:underline">{heading.text}</span>
+                        <span className="hover:underline text-ellipsis overflow-hidden whitespace-nowrap">{heading.text}</span>
                       </a>
                     </li>
                   );

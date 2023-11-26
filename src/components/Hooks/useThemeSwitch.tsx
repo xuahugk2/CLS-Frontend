@@ -23,7 +23,7 @@ const useThemeSwitch = () => {
     );
   };
 
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState('light');
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(preferDarkQuery);
@@ -47,7 +47,7 @@ const useThemeSwitch = () => {
     toggleTheme(mode);
   }, [mode]);
 
-  return [mode, setMode];
+  return { mode, setMode };
 };
 
 export default useThemeSwitch;

@@ -9,19 +9,24 @@ import useThemeSwitch from '../Hooks/useThemeSwitch';
 import { cx } from '@/utils';
 
 const Header = () => {
-  const [mode, setMode] = useThemeSwitch();
+  const { mode, setMode } = useThemeSwitch();
   const [click, setClick] = useState(false);
 
-  const toggle = () => {
+  const handleOpenMobileMenu = () => {
     setClick(!click);
   };
+
+  const handleDarkMode = () => {
+    setMode(mode === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <header className="w-full p-4 px-5 sm:px-10 flex items-center justify-between">
       <Logo />
 
       <button
         className="inline-block sm:hidden z-50"
-        onClick={toggle}
+        onClick={handleOpenMobileMenu}
         aria-label="Hamburger Menu"
       >
         <div className="w-6 cursor-pointer transition-all ease-in-out duration-300">
@@ -76,7 +81,7 @@ const Header = () => {
           Contact
         </Link>
         <button
-          onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+          onClick={handleDarkMode}
           className={cx(
             'w-6 h-6 ease-in-out ml-2 flex items-center justify-center rounded-full p-1',
             mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'
@@ -105,7 +110,7 @@ const Header = () => {
           Contact
         </Link>
         <button
-          onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+          onClick={handleDarkMode}
           className={cx(
             'w-6 h-6 ease-in-out ml-2 flex items-center justify-center rounded-full p-1',
             mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'

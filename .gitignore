@@ -41,3 +41,8 @@ next-env.d.ts
 /.contentlayer
 /content
 /public/blogs
+
+# next-sitemap
+public/robots.txt
+public/*.xml
+public/sitemap-0.xml
